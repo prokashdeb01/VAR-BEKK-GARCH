@@ -26,7 +26,7 @@ library(strucchange)
 
 # Importing Data
 
-{r}
+
 fish <- read_excel("C:/Users/pzd0035/OneDrive - Auburn University/Auburn/Research/Data/Fish_BEKK_GARCH/Data/fish_price_bekk.xlsx")
 fish <- fish[-1, ]
 
@@ -34,7 +34,7 @@ fish <- fish[-1, ]
 
 ## Lag selection and VAR
 
-{r}
+
 hilsa <- ts(fish$lr_hilsa_national, frequency = 12, start = c(2006,2,1))
 tilapia <- ts(fish$lr_tilapia_national, frequency = 12, start = c(2006,2,1))
 pangasius <- ts(fish$lr_pangasius_national, frequency = 12, start = c(2006,2,1))
@@ -64,7 +64,7 @@ head(temp)
 
 # VECM
 
-{r}
+
 # vec <- ca.jo(price, ecdet = "none", type = "trace",
 #              K = 2, spec = "transitory")
 # summary(vec)
@@ -81,7 +81,7 @@ head(temp)
 
 # Asymmetric BEKK
 
-{r}
+
 # National
 # price <- fish[,c(22,26,30,34,38)]
 # price <- as.matrix(price)
@@ -153,7 +153,7 @@ ggsave("pacf_plot.jpg", width = 30, height = 30, units = c("cm"), dpi = 300)
 
 ## BEKK Graphs
 
-{r}
+
 sigma <- as.data.frame(bekk_price[["sigma_t"]])
 head(sigma)
 
@@ -235,7 +235,7 @@ ggsave("correlation_plot.jpg", plot = plot_corr, width = 30, height = 30, units 
 
 ## Structural Break
 
-{r}
+
 
 ## Hilsa
 hilsa_level <- ts(fish$hilsa_national, frequency = 12, start = c(2006,1,1))
@@ -300,7 +300,7 @@ plot(efp(silver_level~date, type = "OLS-CUSUM"))
 
 ## Descriptive
 
-{r}
+
 colMeans(fish[,c(22,26,30,34,38)])
 
 sapply(fish[c('lr_hilsa_national', 'lr_tilapia_national', 'lr_pangasius_national', 'lr_silver_national', 'lr_rohu_national')], sd)
@@ -343,7 +343,7 @@ ggsave("pacf_plot_level.jpg", width = 30, height = 30, units = c("cm"), dpi = 30
 
 ## Plotting 
 
-{r}
+
 fish$date <- as.Date(fish$date, format="%Y-%m-%d")
 
 plot_hilsa <- ggplot()+
